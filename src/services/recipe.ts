@@ -21,4 +21,4 @@ export const recipesApi = createApi({
   }),
 });
 
-export const { useSearchRecipesQuery } = recipesApi;
+export const { useLazySearchRecipesQuery } = recipesApi;
