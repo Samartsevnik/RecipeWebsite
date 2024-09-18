@@ -61,7 +61,13 @@ const RecipeDetailPage = () => {
     >
       <Container>
         {isLoading ? (
-          <Spinner animation="border" variant="primary" />
+          <div className="flex items-center justify-center mt-14">
+            <Spinner
+              animation="border"
+              variant="primary"
+              className="text-primary"
+            />
+          </div>
         ) : (
           <>
             <Card className="mt-4">
