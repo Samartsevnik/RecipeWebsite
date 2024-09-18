@@ -1,6 +1,9 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from './base';
-import { IRecipeResponse } from './types/responsePayloadTypes';
+import {
+  IRecipeInformation,
+  IRecipeResponse,
+} from './types/responsePayloadTypes';
 import { SearchRecipesParams } from './types/requestPayloadTypes';
 
 export const recipesApi = createApi({
@@ -18,7 +21,16 @@ export const recipesApi = createApi({
         },
       }),
     }),
+    getRecipeInformation: builder.query<IRecipeInformation, string>({
+      query: (id) => ({
+        url: `/${id}/information`,
+        params: {
+          includeNutrition: false,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useLazySearchRecipesQuery } = recipesApi;
+export const { useLazySearchRecipesQuery, useGetRecipeInformationQuery } =
+  recipesApi;

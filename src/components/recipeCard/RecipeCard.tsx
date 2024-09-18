@@ -10,7 +10,7 @@ interface RecipeCardProps {
 const RecipeCard: FC<RecipeCardProps> = ({ recipe }) => {
   return (
     <Link
-      to={`/recipe/${recipe.id}`}
+      to={`/recipes/${recipe.id}`}
       className="text-decoration-none"
       title={recipe.title}
     >

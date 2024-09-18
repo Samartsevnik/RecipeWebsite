@@ -20,7 +20,7 @@ export const Layout: FC<LayoutProps> = ({ children, title, description }) => {
         <meta name="description" content={description} />
       </Helmet>
       <Header />
-      <main>{children}</main>
+      <main className="mb-4">{children}</main>
       <Footer />
     </>
   );
