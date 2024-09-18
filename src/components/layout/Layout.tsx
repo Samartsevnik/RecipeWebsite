@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet';
 import { APP_NAME } from '../../constants.ts';
 import { FC, ReactNode } from 'react';
 import { Header } from '../header';
+import Footer from '../footer/Footer.tsx';
 
 interface LayoutProps {
   title: string;
@@ -20,6 +21,7 @@ export const Layout: FC<LayoutProps> = ({ children, title, description }) => {
       </Helmet>
       <Header />
       <main>{children}</main>
+      <Footer />
     </>
   );
 };
