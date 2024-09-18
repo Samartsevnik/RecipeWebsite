@@ -57,6 +57,7 @@ const HomePage = () => {
               <Form.Control
                 type="text"
                 placeholder="Search for recipes"
+                aria-label="Search for recipes input field"
                 value={searchTerm}
                 onChange={(e) =>
                   setSearchParams((params) => {
@@ -66,7 +67,12 @@ const HomePage = () => {
                 }
               />
             </Form.Group>
-            <Button variant="primary" text="Search" type="submit" />
+            <Button
+              variant="primary"
+              text="Search"
+              type="submit"
+              ariaLabel="Submit search query"
+            />
           </div>
         </Form>
 
@@ -87,9 +93,11 @@ const HomePage = () => {
 
         {/* Result */}
         {recipes?.totalResults === 0 && !isFetching && (
-          <div>No results found</div>
+          <div aria-live="assertive">No results found</div>
         )}
-        {isFetching && <Spinner animation="border" variant="primary" />}
+        {isFetching && (
+          <Spinner animation="border" variant="primary" aria-live="polite" />
+        )}
         {!!recipes?.totalResults && (
           <>
             <div className="mb-3">Total results found: {totalResults}</div>
@@ -103,6 +111,7 @@ const HomePage = () => {
                 handleRequestRecipes({ page });
               }}
               totalResults={totalResults}
+              aria-label="Recipe search pagination"
             />
           </>
         )}
