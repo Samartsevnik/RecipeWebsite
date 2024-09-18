@@ -1,13 +1,12 @@
-import { fetchBaseQuery } from '@reduxjs/toolkit/query';
+import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const baseQuery = fetchBaseQuery({
-  baseUrl: process.env.REACT_APP_API_URL,
-  paramsSerializer: (params) => {
-    const apiKey = process.env.REACT_APP_API_KEY;
-    const queryParams = new URLSearchParams(params);
+  baseUrl: import.meta.env.VITE_API_URL,
+  prepareHeaders: (headers) => {
+    const apiKey = import.meta.env.VITE_API_KEY;
     if (apiKey) {
-      queryParams.append('apiKey', apiKey);
+      headers.set('Authorization', `Bearer ${apiKey}`);
     }
-    return queryParams.toString();
+    return headers;
   },
 });
