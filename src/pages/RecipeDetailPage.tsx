@@ -38,7 +38,7 @@ const RecipeDetailPage = () => {
     }
 
     return (
-      <Layout description="Detailed recipe page" title="Recipe page">
+      <Layout description="Recipe Detail page" title="Recipe Detail Page">
         <Container>
           <div className="mt-2 text-2xl" role="alert" aria-live="assertive">
             {errorMessage}
@@ -55,7 +55,10 @@ const RecipeDetailPage = () => {
   }
 
   return (
-    <Layout description="Detailed recipe page" title="Recipe page">
+    <Layout
+      description={`Recipe details of ${recipe?.title}`}
+      title="Recipe page"
+    >
       <Container>
         {isLoading ? (
           <Spinner animation="border" variant="primary" />
