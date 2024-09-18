@@ -1,7 +1,7 @@
 import { Layout } from '../components/layout/Layout.tsx';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
-export const AboutUsPage = () => {
+const AboutUsPage = () => {
   return (
     <Layout
       title="About Us"
@@ -74,3 +74,5 @@ export const AboutUsPage = () => {
     </Layout>
   );
 };
+
+export default AboutUsPage;
