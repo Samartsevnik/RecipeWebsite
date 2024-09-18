@@ -1,7 +1,7 @@
 import { Layout } from '../components/layout/Layout.tsx';
 import { Container, Form, Spinner } from 'react-bootstrap';
 import Pagination from '../components/pagination/Pagination.tsx';
-import { FormEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import { FormEvent, useEffect, useMemo, useState } from 'react';
 import { Button } from '../components/button';
 import { useLazySearchRecipesQuery } from '../services/recipe.ts';
 import RecipeCard from '../components/recipeCard/RecipeCard.tsx';
@@ -11,7 +11,7 @@ import { cuisineOptions } from '../constants.ts';
 import { useSearchParams } from 'react-router-dom';
 
 const HomePage = () => {
-  const [cuisine, setCuisine] = useState('European');
+  const [cuisine, setCuisine] = useState('');
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(1);
 
@@ -45,7 +45,7 @@ const HomePage = () => {
     if (searchTerm) {
       handleRequestRecipes();
     }
-  }, [handleRequestRecipes]);
+  }, []);
 
   return (
     <Layout description="Search of recipes" title="Homepage">
