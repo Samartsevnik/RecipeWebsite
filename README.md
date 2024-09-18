@@ -26,6 +26,7 @@ To get started with this project, follow these steps:
 3. **Add .env file**
 4. **Run project**: `npm run dev`
 
-
+## Notes
+Due to limited time, **Jest** tests have not been implemented in this project
 
 
