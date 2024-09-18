@@ -76,7 +76,7 @@ const RecipeDetailPage = () => {
                   variant="top"
                   src={recipe?.image}
                   alt="Photo of the cooked dish"
-                  className="float-left w-1/2 mr-3 max-md:w-full max-md:float-none"
+                  className="float-left w-1/3 mr-3 max-md:w-full max-md:float-none border border-solid border-black"
                 />
                 <h1 className="text-3xl font-bold md:mb-4 max-md:mt-2 max-md:mb-2">
                   {recipe?.title}
