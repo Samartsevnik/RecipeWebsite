@@ -11,33 +11,29 @@ import { cuisineOptions } from '../constants.ts';
 import { useSearchParams } from 'react-router-dom';
 
 const HomePage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const searchTerm = useMemo(() => {
-    return searchParams.get('query') || '';
-  }, [searchParams]);
-
   const [cuisine, setCuisine] = useState('European');
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(1);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchTerm = useMemo(() => {
+    return searchParams.get('query') || '';
+  }, [searchParams]);
+
   const [fetchRecipes, { data: recipes, isFetching }] =
     useLazySearchRecipesQuery();
 
-  const handleRequestRecipes = useCallback(
-    (params?: Partial<SearchRecipesParams>) => {
-      const fetchParams = {
-        query: searchTerm,
-        cuisine,
-        page,
-        ...params,
-      };
-      fetchRecipes(fetchParams).then(({ data }) =>
-        setTotalResults(data?.totalResults || 1)
-      );
-    },
-    [cuisine, fetchRecipes, page, searchTerm]
-  );
+  const handleRequestRecipes = (params?: Partial<SearchRecipesParams>) => {
+    const fetchParams = {
+      query: searchTerm,
+      cuisine,
+      page,
+      ...params,
+    };
+    fetchRecipes(fetchParams).then(({ data }) =>
+      setTotalResults(data?.totalResults || 1)
+    );
+  };
 
   const handleSearch = async (e: FormEvent) => {
     e.preventDefault();
@@ -54,6 +50,7 @@ const HomePage = () => {
   return (
     <Layout description="Search of recipes" title="Homepage">
       <Container>
+        {/*Search */}
         <Form className="mt-3" onSubmit={handleSearch}>
           <div className="d-flex align-items-center gap-2 mb-3">
             <Form.Group className="flex-grow-1">
@@ -73,6 +70,7 @@ const HomePage = () => {
           </div>
         </Form>
 
+        {/*Filter */}
         <Selector
           options={cuisineOptions}
           onSelect={(value) => {
@@ -86,6 +84,8 @@ const HomePage = () => {
           }}
           className="mb-3"
         />
+
+        {/* Result */}
         {recipes?.totalResults === 0 && !isFetching && (
           <div>No results found</div>
         )}
