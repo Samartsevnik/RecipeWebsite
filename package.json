@@ -1,5 +1,6 @@
 {
   "name": "recipewebsite",
+  "author": "Nikita Samartsev",
   "private": true,
   "version": "0.0.0",
   "type": "module",
