@@ -1,6 +1,7 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import logo from '../../assets/logo.png';
 import { APP_NAME } from '../../constants.ts';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   return (
@@ -22,8 +23,10 @@ export const Header = () => {
           id="responsive-navbar-nav"
         >
           <Nav>
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/about-us">About us</Nav.Link>
+            <Link to="/" className="mr-6">
+              Home
+            </Link>
+            <Link to="/about-us">About us</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
